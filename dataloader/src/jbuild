@@ -1,0 +1,7 @@
+(jbuild_version 1)
+
+(library
+ ((name dataloader)
+  (public_name dataloader)
+  (wrapped false)
+  (libraries (result))))

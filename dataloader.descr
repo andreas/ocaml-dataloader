@@ -1,0 +1,3 @@
+Dataloader is a utility to be used for your application's data fetching layer to provide batching and caching, in particular with `graphql`. It is a port of DataLoader for Node: https://github.com/facebook/dataloader
+
+To use with Lwt, see `dataloader-lwt`.
