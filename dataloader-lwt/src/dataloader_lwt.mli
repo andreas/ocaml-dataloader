@@ -1,10 +1,10 @@
-type ('a, 'b) t
+type ('a, 'b, 'err) t
 
 val create :
-  load:('a list -> ('b list, exn) result Lwt.t) ->
-  ('a, 'b) t
+  load:('a list -> ('b list, 'err) result Lwt.t) ->
+  ('a, 'b, 'err) t
 
 val load :
-  ('a, 'b) t ->
+  ('a, 'b, 'err) t ->
   'a ->
-  ('b, exn) result Lwt.t
+  ('b, 'err) result Lwt.t

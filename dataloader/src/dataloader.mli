@@ -1,18 +1,18 @@
-type ('a, 'b) t
+type ('a, 'b, 'err) t
 
 type 'a cont = 'a -> unit
-type 'a cps = exn cont -> 'a cont -> unit
-type ('a, 'b) loader = 'a list -> 'b list cps
+type ('a, 'err) cps = 'err cont -> 'a cont -> unit
+type ('a, 'b, 'err) loader = 'a list -> ('b list, 'err) cps
 
 val create :
-  load:('a, 'b) loader ->
-  ('a, 'b) t
+  load:('a, 'b, 'err) loader ->
+  ('a, 'b, 'err) t
 
 val load :
-  ('a, 'b) t ->
+  ('a, 'b, 'err) t ->
   'a ->
-  'b cps
+  ('b, 'err) cps
 
 val trigger :
-  ('a, 'b) t ->
+  ('a, 'b, 'err) t ->
   unit

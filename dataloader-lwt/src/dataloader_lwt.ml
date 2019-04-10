@@ -1,5 +1,5 @@
-type ('a, 'b) t = {
-  dataloader : ('a, 'b) Dataloader.t;
+type ('a, 'b, 'err) t = {
+  dataloader : ('a, 'b, 'err) Dataloader.t;
   mutable pause : unit Lwt.t option;
 }
 
@@ -20,7 +20,7 @@ let pause t =
       Dataloader.trigger t.dataloader
     in
     t.pause <- Some pause;
-    pause 
+    pause
   | Some pause -> pause
 
 let load t key =
