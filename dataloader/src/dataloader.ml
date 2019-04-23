@@ -1,16 +1,16 @@
 type 'a cont = 'a -> unit
-type 'a cps = exn cont -> 'a cont -> unit
-type ('key, 'value) loader = 'key list -> 'value list cps
+type ('a, 'err) cps = 'err cont -> 'a cont -> unit
+type ('key, 'value, 'err) loader = 'key list -> ('value list, 'err) cps
 
-type ('key, 'value) entry = {
+type ('key, 'value, 'err) entry = {
   key  : 'key;
-  fail : exn cont;
+  fail : 'err cont;
   ok   : 'value cont;
 }
 
-type ('key, 'value) t = {
-  loader : ('key, 'value) loader;
-  mutable entries : ('key, 'value) entry list
+type ('key, 'value, 'err) t = {
+  loader : ('key, 'value, 'err) loader;
+  mutable entries : ('key, 'value, 'err) entry list
 }
 
 let create ~load =
