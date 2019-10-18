@@ -1,8 +1,0 @@
-(jbuild_version 1)
-
-(library
- ((name dataloader_lwt)
-  (public_name dataloader-lwt)
-  (wrapped false)
-  (libraries (dataloader lwt))))
-

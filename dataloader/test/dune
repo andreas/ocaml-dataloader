@@ -1,0 +1,11 @@
+(executables
+ (libraries dataloader alcotest)
+ (names test))
+
+(alias
+ (name runtest)
+ (package dataloader)
+ (deps
+  (:< test.exe))
+ (action
+  (run %{<} -v)))
