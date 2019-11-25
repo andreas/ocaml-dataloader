@@ -6,8 +6,9 @@ doc: "https://andreas.github.io/ocaml-dataloader/"
 bug-reports: "https://github.com/andreas/ocaml-dataloader/issues"
 dev-repo: "git+https://github.com/andreas/ocaml-dataloader.git"
 build: [
+  ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs "@install" "@runtest" {with-test}]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
 depends: [
   "ocaml" {>= "4.03.0" }
