@@ -1,5 +1,4 @@
 (library
  (name dataloader)
  (public_name dataloader)
- (wrapped false)
- (libraries result))
+ (wrapped false))

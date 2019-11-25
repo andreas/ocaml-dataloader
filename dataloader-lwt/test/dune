@@ -1,11 +1,3 @@
-(executables
+(test
  (libraries dataloader-lwt lwt.unix alcotest)
- (names test))
-
-(alias
- (name runtest)
- (package dataloader-lwt)
- (deps
-  (:< test.exe))
- (action
-  (run %{<} -v)))
+ (name test))
