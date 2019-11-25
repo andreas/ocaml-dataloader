@@ -14,6 +14,6 @@ depends: [
   "dune" {build & >= "1.0"}
   "dataloader"
   "lwt"
-  "alcotest"
+  "alcotest" {with-test}
 ]
 synopsis: "Lwt support for dataloader"
