@@ -13,6 +13,6 @@ depends: [
   "ocaml" {>= "4.03.0"}
   "dune" {build & >= "1.0"}
   "rresult"
-  "alcotest"
+  "alcotest" {with-test}
 ]
 synopsis: "Dataloader for ocaml"
