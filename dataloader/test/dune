@@ -1,0 +1,3 @@
+(test
+ (libraries dataloader alcotest)
+ (name test))

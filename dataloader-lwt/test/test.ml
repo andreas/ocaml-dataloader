@@ -26,7 +26,7 @@ let suite = [
     |> Lwt_main.run
   );
   ("failed load", `Quick, fun () ->
-    let loader = Dataloader_lwt.create ~load:(fun keys ->
+    let loader = Dataloader_lwt.create ~load:(fun _keys ->
       Lwt_result.fail (Failure "boom")
     ) in
     List.map (fun i ->

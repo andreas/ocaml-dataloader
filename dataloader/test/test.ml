@@ -1,6 +1,6 @@
 let suite = [
   ("load one", `Quick, fun () ->
-    let loader = Dataloader.create ~load:(fun keys fail ok ->
+    let loader = Dataloader.create ~load:(fun keys _fail ok ->
       ok keys
     ) in
     Dataloader.load loader 1
@@ -11,7 +11,7 @@ let suite = [
   );
   ("load n", `Quick, fun () ->
     let loader_calls = ref 0 in
-    let loader = Dataloader.create ~load:(fun keys fail ok ->
+    let loader = Dataloader.create ~load:(fun keys _fail ok ->
       loader_calls := !loader_calls + 1;
       ok keys
     ) in
@@ -24,13 +24,13 @@ let suite = [
     Alcotest.(check int) "Load calls" 1 !loader_calls
   );
   ("failed load", `Quick, fun () ->
-    let loader = Dataloader.create ~load:(fun keys fail ok ->
+    let loader = Dataloader.create ~load:(fun _keys fail _ok ->
       fail (Failure "boom")
     ) in
     List.iter (fun i ->
       Dataloader.load loader i
         (fun _ -> ())
-        (fun value -> Alcotest.failf "Expected failure, got %d" i)
+        (fun _value -> Alcotest.failf "Expected failure, got %d" i)
     ) [1;2;3;4;5;6;7;8;9;10];
     Dataloader.trigger loader;
   )
