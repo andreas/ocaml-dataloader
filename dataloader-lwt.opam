@@ -5,6 +5,7 @@ homepage: "https://github.com/andreas/ocaml-dataloader"
 doc: "https://andreas.github.io/ocaml-dataloader/"
 bug-reports: "https://github.com/andreas/ocaml-dataloader/issues"
 dev-repo: "git+https://github.com/andreas/ocaml-dataloader.git"
+version: "0.0.1"
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
